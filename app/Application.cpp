@@ -20,19 +20,13 @@ void Application::runLoginMenu() {
     switch (static_cast<LoginMenuOption>(userChoice)) {
 
         case LoginMenuOption::MANUAL_INPUT:
-			consoleWriter.informationMessage("• Необходимо ввести число для начала спирали");
+			consoleWriter.informationMessage("• Необходимо ввести начальное число спирали");
             std::cout << "  ╰─> Введите число: ";
             algorithmData.startNumber = readValidatedInRange(1, INT_MAX, "• Введите положительное целое число.");
 
-            consoleWriter.informationMessage("• Необходимо ввести число для начала спирали");
+            consoleWriter.informationMessage("• Необходимо ввести конечное число спирали");
             std::cout << "  ╰─> Введите число: ";
-            algorithmData.lengthOfSideOfSquare = readValidatedInRange(1, INT_MAX, "• Введите положительное целое число.");
-
-			numberGeneration.GenerateDataForSpiral(algorithmData);
-            
-			consoleWriter.displayDataAsSpiral(algorithmData);
-
-            primeSieve.MarkPrimesInSpiral(algorithmData);
+            algorithmData.endNumber = readValidatedInRange(1, INT_MAX, "• Введите положительное целое число.");
 
             break;
 
@@ -57,6 +51,19 @@ void Application::runLoginMenu() {
             running = false;
             return;
     }
+
+    runConstructionOfSpiral();
+}
+
+void Application::runConstructionOfSpiral() {
+
+    numberGeneration.GenerateDataForSpiral(algorithmData);
+
+    consoleWriter.displayDataAsSpiral(algorithmData, false);
+
+    primeSieve.MarkPrimesInSpiral(algorithmData);
+
+    consoleWriter.displayDataAsSpiral(algorithmData, true);
 
     runResultMenu();
 }

@@ -91,27 +91,61 @@ void ConsoleWriter::successMessage(const std::string& message)
     std::cout << "  └───────────────────────────────────────────────┘\n\n";
 }
 
-void ConsoleWriter::displayDataAsSpiral(const AlgorithmData& algorithmData) {
-    const int side = algorithmData.lengthOfSideOfSquare;
+void ConsoleWriter::displayDataAsSpiral(const AlgorithmData& algorithmData, bool highlightPrimes) {
+    
+    // Шапка
+    std::cout << std::endl;
 
-    // ширина колонки = количество цифр в самом длинном числе
-    // (оно стоит в конце спирали, но проще найти максимум обходом)
-    size_t maxLength = 0;
-    for (int i = 0; i < side; i++) {
-        for (int j = 0; j < side; j++) {
-            size_t length = std::to_string(algorithmData.spiralGrid[i][j]).length();
-
-            if (length > maxLength) {
-                maxLength = length;
-            }
-        }
+    if (highlightPrimes) {
+		std::cout << "  СПИРАЛЬ С ПРОСТЫМИ ЧИСЛАМИ: \n";
+    }
+    else {
+        std::cout << "  СПИРАЛЬ: \n";
     }
 
-    // Вывод
+    // Сторона спирали
+    const int side = static_cast<int>(algorithmData.spiralGrid.size());
+
+    // Ширина под цифры = количество цифр в самом большом числе
+    const size_t digitsWidth = std::to_string(algorithmData.endNumber).length();
+
+    // Ширина клетки: цифры + место под скобки (если простые выделяются)
+    const size_t cellWidth = digitsWidth + (highlightPrimes ? 2 : 0);
+
+    // Ширина колонки: клетка + 2 пробела отступа слева
+    const int columnWidth = static_cast<int>(cellWidth) + 2;
+
     for (int i = 0; i < side; i++) {
         for (int j = 0; j < side; j++) {
-            std::cout << std::setw(maxLength + 2) << algorithmData.spiralGrid[i][j];
+            const int number = algorithmData.spiralGrid[i][j];
+
+            // Текст клетки: для пустой клетки остаётся пустым
+            std::string cellText;
+
+            // Пустая клетка (спираль закончилась раньше, чем заполнился квадрат)
+            if (number != 0) {
+                // Цифры, выровненные по правому краю внутри своей ширины
+                std::string digits = std::to_string(number);
+                digits = std::string(digitsWidth - digits.length(), ' ') + digits;
+
+                if (highlightPrimes) {
+                    // Простое: в скобках, обычное: пробелы на месте скобок,
+                    // чтобы цифры стояли в одних и тех же позициях
+                    if (algorithmData.primeMask[i][j]) {
+                        cellText = "[" + digits + "]";
+                    }
+                    else {
+                        cellText = " " + digits + " ";
+                    }
+                }
+                else {
+                    cellText = digits;
+                }
+            }
+
+            std::cout << std::setw(columnWidth) << cellText;
         }
-        std::cout << "\n";
+
+        std::cout << "\n\n";
     }
 }

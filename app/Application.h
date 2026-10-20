@@ -33,6 +33,7 @@ private:
 
 
     void runLoginMenu();
+    void runConstructionOfSpiral();
     void runResultMenu();
 
     int readValidatedInRange(int min, int max, const std::string& rangeErrorMessage);
