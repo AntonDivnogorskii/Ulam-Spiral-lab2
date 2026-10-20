@@ -14,7 +14,7 @@
     <ClCompile Include="IO\FileWriter.cpp">
       <Filter>IO</Filter>
     </ClCompile>
-    <ClCompile Include="app\Application.cpp">
+    <ClCompile Include="App\Application.cpp">
       <Filter>App</Filter>
     </ClCompile>
     <ClCompile Include="Core\PrimeSieve.cpp">
@@ -45,7 +45,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="app\Application.h">
+    <ClInclude Include="App\Application.h">
       <Filter>App</Filter>
     </ClInclude>
     <ClInclude Include="Domain\MenuOptions.h">

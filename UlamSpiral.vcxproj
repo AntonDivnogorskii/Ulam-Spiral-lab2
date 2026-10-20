@@ -140,7 +140,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Core\PrimeSieve.cpp" />
-    <ClCompile Include="app\Application.cpp" />
+    <ClCompile Include="App\Application.cpp" />
     <ClCompile Include="IO\ConsoleReader.cpp" />
     <ClCompile Include="IO\ConsoleWriter.cpp" />
     <ClCompile Include="IO\FileReader.cpp" />
@@ -152,7 +152,7 @@
   <ItemGroup>
     <ClInclude Include="Domain\AlgorithmData.h" />
     <ClInclude Include="Core\PrimeSieve.h" />
-    <ClInclude Include="app\Application.h" />
+    <ClInclude Include="App\Application.h" />
     <ClInclude Include="IO\ConsoleReader.h" />
     <ClInclude Include="IO\ConsoleWriter.h" />
     <ClInclude Include="IO\FileReader.h" />

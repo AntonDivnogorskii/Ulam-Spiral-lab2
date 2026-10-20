@@ -3,6 +3,7 @@
 #include <cmath>
 #include <algorithm>
 
+
 std::vector<int> PrimeSieve::FindSmallPrimes(int limit) {
     std::vector<bool> isComposite(limit + 1, false);
     std::vector<int> primes;
@@ -20,6 +21,7 @@ std::vector<int> PrimeSieve::FindSmallPrimes(int limit) {
 
     return primes;
 }
+
 
 std::vector<bool> PrimeSieve::SieveSegment(long long first, long long last) {
     std::vector<bool> isPrime(last - first + 1, true);

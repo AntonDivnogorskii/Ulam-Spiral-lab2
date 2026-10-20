@@ -1,21 +1,25 @@
 #include "NumberGeneration.h"
 
 void NumberGeneration::GenerateDataForSpiral(AlgorithmData& algorithmData) {
-    const int side = algorithmData.lengthOfSideOfSquare;
+    const int sideOfGrid = algorithmData.lengthOfSideOfSquare;
 
-    // side строк по side нулей
-    algorithmData.spiralGrid.assign(side, std::vector<int>(side, 0));
+    // sideOfGrid строк по sideOfGrid нулей
+    algorithmData.spiralGrid.assign(sideOfGrid, std::vector<int>(sideOfGrid, 0));
 
 	// Начальная позиция в центре сетки
-    int row = side / 2;
-    int col = side / 2;
+    int row = sideOfGrid / 2;
+    int col = sideOfGrid / 2;
 
-    // 
-    int totalCells = side * side;
+	// Количество клеток, которые нужно заполнить
+    int totalCells = sideOfGrid * sideOfGrid;
+
+	// Количество уже заполненных клеток
     int filledCells = 0;
 
-    int currentNumber = algorithmData.startNumber;
-    algorithmData.spiralGrid[row][col] = currentNumber++;
+    int startNumber = algorithmData.startNumber;
+
+
+    algorithmData.spiralGrid[row][col] = startNumber++;
     filledCells++;
 
     const int dRow[] = { 0, -1, 0, 1 }; // вправо, вверх, влево, вниз
@@ -30,12 +34,12 @@ void NumberGeneration::GenerateDataForSpiral(AlgorithmData& algorithmData) {
             row += dRow[direction];
             col += dCol[direction];
 
-            if (row >= 0 && row < side && col >= 0 && col < side) {
-                algorithmData.spiralGrid[row][col] = currentNumber;
+            if (row >= 0 && row < sideOfGrid && col >= 0 && col < sideOfGrid) {
+                algorithmData.spiralGrid[row][col] = startNumber;
                 filledCells++;
             }
 
-            currentNumber++;
+            startNumber++;
         }
 
         direction = (direction + 1) % 4;
