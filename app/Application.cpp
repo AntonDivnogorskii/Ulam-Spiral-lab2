@@ -1,7 +1,7 @@
 #include "Application.h"
 
 int Application::runApplication() {
-    //tests.runTests();
+    tests.runTests();
 
     consoleWriter.greetingMessage();
 
@@ -15,7 +15,7 @@ int Application::runApplication() {
 void Application::runLoginMenu() {
     consoleWriter.loginMenuMessage();
 
-    int userChoice = readValidatedInRange(0, 3, "• Вы можете выбрать только существующий пункт.");
+    userChoice = readValidatedInRange(0, 3, "• Вы можете выбрать только существующий пункт.");
 
     switch (static_cast<LoginMenuOption>(userChoice)) {
 
@@ -31,19 +31,20 @@ void Application::runLoginMenu() {
             break;
 
         case LoginMenuOption::FILE_INPUT:
-            //std::string path = consoleReader.readFilePath();
+            consoleWriter.informationMessage("• Необходимо ввести путь к файлу с данными");
+            std::cout << "  ╰─> Введите путь до файла: ";
+            {
+                std::string path;
+                std::getline(std::cin, path);
 
-            //text = fileIO.readTextFromFile(path);
-
-            //if (text.empty()) {
-            //    consoleWriter.informationMessage("• Не удалось считать текст из файла.");
-            //    return;
-            //}
-
-            //break;
+                if (!fileReader.readInputData(path, algorithmData)) {
+                    return;
+                }
+            }
+            break;
 
         case LoginMenuOption::RUN_TESTS:
-            //tests.runTests();
+            tests.runTests();
             return;
 
         case LoginMenuOption::EXIT:
@@ -73,31 +74,33 @@ void Application::runConstructionOfSpiral() {
 }
 
 void Application::runResultMenu() {
-    bool inResultMenu = true;
-    //while (inResultMenu) {
-    //    consoleWriter.outputMenu();
-    //    int choice = readValidatedChoice(0, 6);
+    inResultMenu = true;
 
-    //    switch (static_cast<MenuOptions>(choice)) {
-    //    case MenuOptions::SAVE_TEXT:
-    //        fileIO.saveTextToFile(text);
-    //        break;
+    while (inResultMenu && running) {
 
-    //    case MenuOptions::SAVE_RESULTS:
-    //        fileIO.saveResultsToFile(results);
-    //        break;
+        consoleWriter.outputMenuMessage();
+        userChoice = readValidatedInRange(0, 3, "• Вы можете выбрать только существующий пункт.");
 
-    //    case MenuOptions::RETURN_TO_PREVIOUS_MENU:
-    //        inResultMenu = false;
-    //        break;
+        switch (static_cast<ResultMenuOption>(userChoice)) {
 
-    //    case MenuOptions::EXIT:
-    //        running = false;
-    //        inResultMenu = false;
-    //        break;
+            case ResultMenuOption::SAVE_INPUT_DATA:
+                fileWriter.saveInputData(algorithmData);
+                break;
 
-    //    }
-    //}
+            case ResultMenuOption::SAVE_RESULTS:
+                fileWriter.saveResultsToFile(algorithmData);
+                break;
+
+            case ResultMenuOption::RETURN_TO_PREVIOUS_MENU:
+                inResultMenu = false;
+                break;
+
+            case ResultMenuOption::EXIT:
+                running = false;
+                inResultMenu = false;
+                break;
+        }
+    }
 }
 
 int Application::readValidatedInRange(int min, int max, const std::string& rangeErrorMessage) {

@@ -20,12 +20,14 @@ public:
 
 private:
     std::string text;
+	int userChoice = 0;
     bool running = true;
+    bool inResultMenu = true;
 
     ConsoleReader consoleReader;
     ConsoleWriter consoleWriter;
-    //FileReader fileReader;
-    //FileWriter fileWriter;
+    FileReader fileReader;
+    FileWriter fileWriter;
     
 	NumberGeneration numberGeneration;
     PrimeSieve primeSieve;
