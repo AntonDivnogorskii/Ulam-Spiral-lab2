@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="IO\ConsoleReader.cpp">
+      <Filter>IO</Filter>
+    </ClCompile>
+    <ClCompile Include="IO\ConsoleWriter.cpp">
+      <Filter>IO</Filter>
+    </ClCompile>
+    <ClCompile Include="IO\FileReader.cpp">
+      <Filter>IO</Filter>
+    </ClCompile>
+    <ClCompile Include="IO\FileWriter.cpp">
+      <Filter>IO</Filter>
+    </ClCompile>
+    <ClCompile Include="app\Application.cpp">
+      <Filter>App</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\PrimeSieve.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Tests\Tests.cpp">
+      <Filter>Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\NumberGeneration.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Domain">
+      <UniqueIdentifier>{d78f9d40-294e-4323-9f72-d856061c2f1a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core">
+      <UniqueIdentifier>{353de930-fc06-436f-bc29-3fe16da8dce9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="IO">
+      <UniqueIdentifier>{322b72b2-f37e-49a9-aab1-c564ff4c5fd6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="App">
+      <UniqueIdentifier>{ba6a9058-2af6-43c3-abf0-af5f0a6a42e6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Tests">
+      <UniqueIdentifier>{464fc9a0-e2b7-4877-85f8-01be5ffd786f}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="app\Application.h">
+      <Filter>App</Filter>
+    </ClInclude>
+    <ClInclude Include="Domain\MenuOptions.h">
+      <Filter>Domain</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\PrimeSieve.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="IO\ConsoleReader.h">
+      <Filter>IO</Filter>
+    </ClInclude>
+    <ClInclude Include="IO\ConsoleWriter.h">
+      <Filter>IO</Filter>
+    </ClInclude>
+    <ClInclude Include="IO\FileReader.h">
+      <Filter>IO</Filter>
+    </ClInclude>
+    <ClInclude Include="IO\FileWriter.h">
+      <Filter>IO</Filter>
+    </ClInclude>
+    <ClInclude Include="Tests\Tests.h">
+      <Filter>Tests</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\NumberGeneration.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Domain\AlgorithmData.h">
+      <Filter>Domain</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

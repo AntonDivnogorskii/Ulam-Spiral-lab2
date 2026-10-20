@@ -1,0 +1,7 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="UlamSpiral.vcxproj" Id="d2b119a4-e4a1-4956-81ad-5d70c98fb78a" />
+</Solution>
