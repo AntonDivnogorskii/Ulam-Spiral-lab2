@@ -13,6 +13,7 @@ public:
     void outputMenuMessage();
 
     void displayDataAsSpiral(const AlgorithmData& algorithmData, bool highlightPrimes);
+    void displayRichLines(const AlgorithmData& algorithmData);
 
     void limitMessage(const std::string& message);
     void warningMessage(const std::string& message);

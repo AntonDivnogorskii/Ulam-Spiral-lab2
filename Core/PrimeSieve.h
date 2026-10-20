@@ -1,7 +1,7 @@
 #pragma once
 
 #include <vector>
-#include "..\Domain\AlgorithmData.h"
+#include "../Domain/AlgorithmData.h"
 
 class PrimeSieve {
 public:

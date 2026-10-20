@@ -26,6 +26,9 @@
     <ClCompile Include="Core\NumberGeneration.cpp">
       <Filter>Core</Filter>
     </ClCompile>
+    <ClCompile Include="Core\LineAnalysis.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Domain">
@@ -74,6 +77,12 @@
     </ClInclude>
     <ClInclude Include="Domain\AlgorithmData.h">
       <Filter>Domain</Filter>
+    </ClInclude>
+    <ClInclude Include="Domain\LineInfo.h">
+      <Filter>Domain</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\LineAnalysis.h">
+      <Filter>Core</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

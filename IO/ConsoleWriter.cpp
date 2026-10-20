@@ -149,3 +149,44 @@ void ConsoleWriter::displayDataAsSpiral(const AlgorithmData& algorithmData, bool
         std::cout << "\n\n";
     }
 }
+
+void ConsoleWriter::displayRichLines(const AlgorithmData& algorithmData) {
+    static const char* directionNames[] = {
+        "по строке (вправо)",
+        "по столбцу (вниз)",
+        "по диагонали (вниз-вправо)",
+        "по диагонали (вниз-влево)"
+    };
+
+    // Запоминаем настройки вывода, чтобы вернуть после проценты
+    const std::ios::fmtflags oldFlags = std::cout.flags();
+    const std::streamsize oldPrecision = std::cout.precision();
+
+    std::cout << std::fixed << std::setprecision(1);
+
+    std::cout << "\nСредняя доля простых чисел в спирали: "
+        << algorithmData.overallPrimeShare * 100 << "%\n";
+
+    if (algorithmData.richLines.empty()) {
+        std::cout << "Линий с повышенной долей простых чисел не найдено.\n";
+    }
+    else {
+        std::cout << "Линии с повышенной долей простых чисел:\n\n";
+    }
+
+    for (const LineInfo& line : algorithmData.richLines) {
+        // Собираем формулу вида: 4t^2 - 2t + 41
+        std::string formula = std::to_string(line.a) + "t^2";
+        formula += (line.b >= 0 ? " + " : " - ") + std::to_string(std::abs(line.b)) + "t";
+        formula += (line.c >= 0 ? " + " : " - ") + std::to_string(std::abs(line.c));
+
+        std::cout << "f(t) = " << formula << "\n"
+            << "    " << directionNames[line.direction]
+            << ", t = 0.." << line.length - 1
+            << ", простых: " << line.primeCount << " из " << line.length
+            << " (" << line.primeShare * 100 << "%)\n\n";
+    }
+
+    std::cout.flags(oldFlags);
+    std::cout.precision(oldPrecision);
+}

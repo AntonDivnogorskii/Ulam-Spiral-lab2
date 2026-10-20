@@ -12,6 +12,7 @@
 #include "../Domain/AlgorithmData.h"
 #include "../Core/NumberGeneration.h"
 #include "../Core/PrimeSieve.h"
+#include "../Core/LineAnalysis.h"
 
 class Application {
 public:
@@ -28,6 +29,7 @@ private:
     
 	NumberGeneration numberGeneration;
     PrimeSieve primeSieve;
+	LineAnalysis lineAnalysis;
     AlgorithmData algorithmData;
     Tests tests;
 

@@ -64,6 +64,10 @@ void Application::runConstructionOfSpiral() {
     primeSieve.MarkPrimesInSpiral(algorithmData);
 
     consoleWriter.displayDataAsSpiral(algorithmData, true);
+    
+    lineAnalysis.FindRichLines(algorithmData);
+
+    consoleWriter.displayRichLines(algorithmData);
 
     runResultMenu();
 }
